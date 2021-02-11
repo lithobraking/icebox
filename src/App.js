@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import EntryForm from './components/EntryForm';
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { CssBaseline, Typography } from '@material-ui/core';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+    primary: {
+      main: '#39a57e',
+    }
+  }
+})
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  formContainer: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+  }
+}));
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className={classes.root}>
+        <header className="app-header">
+          <Typography variant='h3'>ADO Feedback Form</Typography>
+        </header>
+        <article className={classes.formContainer}>
+          <EntryForm />
+        </article>
+      </div>
+    </ThemeProvider>
   );
 }
 
