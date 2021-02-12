@@ -13,12 +13,15 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    width: '100vw',
+    height: '100vh',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   formContainer: {
     width: '100%',
+    height: '100%',
     display: 'flex',
     justifyContent: 'center',
   }

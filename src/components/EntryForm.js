@@ -11,15 +11,16 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        alignContent: 'center',
+        alignItems: 'center',
         flexWrap: 'wrap',
         '& > *': {
             margin: theme.spacing(1),
             width: '55%',
-            height: theme.spacing(16),
+            height: '80%',
         },
     },
     formControl: {
+        marginTop: '15px',
         minWidth: 150,
     },
 }));
@@ -29,7 +30,10 @@ const EntryForm = () => {
     const [selectedDate, setSelectedDate] = useState(Date.now());
     const [feedbackType, setFeedbackType] = useState('');
     const [anonymous, setAnonymous] = useState(false);
+    const [rank, setRank] = useState('');
 
+
+    // haha event handlers go brrr
     const handleDateChange = (date) => {
         setSelectedDate(date);
     };
@@ -40,6 +44,10 @@ const EntryForm = () => {
 
     const handleAnonSwitch = (event) => {
         setAnonymous(event.target.checked);
+    };
+
+    const handleRankSelect = (event) => {
+        setRank(event.target.value);
     };
 
 
@@ -94,6 +102,30 @@ const EntryForm = () => {
                             }
                             label='Submit Anonymously?'
                         />
+                    </Grid>
+                    <Grid
+                        container
+                        justify='space-around'
+                    >
+                        <FormControl variant='outlined' className={classes.formControl}>
+                            <InputLabel id='rank-select-label'>Rank</InputLabel>
+                            <Select
+                                labelId='rank-select-label'
+                                value={rank}
+                                onChange={handleRankSelect}
+                                label='Rank'
+                            >
+                                <MenuItem value=''>
+                                    ----
+                                    </MenuItem>
+                                <MenuItem value='e1'>E-1</MenuItem>
+                                <MenuItem value='e2'>E-2</MenuItem>
+                                <MenuItem value='e3'>E-3</MenuItem>
+                                <MenuItem value='e4'>E-4</MenuItem>
+                                <MenuItem value='e5'>E-5</MenuItem>
+
+                            </Select>
+                        </FormControl>
                     </Grid>
                 </MuiPickersUtilsProvider>
             </Paper>
