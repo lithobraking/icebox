@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MomentUtils from '@date-io/moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import { Button, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select, Switch, TextField } from '@material-ui/core';
+import { Button, Collapse, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select, Switch, TextField } from '@material-ui/core';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 
 
@@ -128,65 +128,77 @@ const EntryForm = () => {
                             justify='space-around'
                             className={classes.grid}
                         >
-                            <Grid item>
-                                <FormControl variant='outlined' className={classes.formControl}>
-                                    <InputLabel id='rank-select-label'>Rank</InputLabel>
-                                    <Select
-                                        labelId='rank-select-label'
-                                        value={rank}
-                                        onChange={handleRankSelect}
-                                        label='Rank'
-                                    >
-                                        <MenuItem value=''>
-                                            ----
+                            <Collapse in={!anonymous}>
+                                <Grid item>
+                                    <FormControl variant='outlined' className={classes.formControl}>
+                                        <InputLabel id='rank-select-label'>Rank</InputLabel>
+                                        <Select
+                                            labelId='rank-select-label'
+                                            value={rank}
+                                            onChange={handleRankSelect}
+                                            label='Rank'
+                                        >
+                                            <MenuItem value=''>
+                                                ----
                                     </MenuItem>
-                                        <MenuItem value='e1'>E-1</MenuItem>
-                                        <MenuItem value='e2'>E-2</MenuItem>
-                                        <MenuItem value='e3'>E-3</MenuItem>
-                                        <MenuItem value='e4'>E-4</MenuItem>
-                                        <MenuItem value='e5'>E-5</MenuItem>
+                                            <MenuItem value='e1'>E-1</MenuItem>
+                                            <MenuItem value='e2'>E-2</MenuItem>
+                                            <MenuItem value='e3'>E-3</MenuItem>
+                                            <MenuItem value='e4'>E-4</MenuItem>
+                                            <MenuItem value='e5'>E-5</MenuItem>
 
-                                    </Select>
-                                </FormControl>
-                            </Grid>
-                            <Grid item>
-                                <TextField label='First Name' variant='outlined' />
-                            </Grid>
-                            <Grid item>
-                                <TextField label='Last Name' variant='outlined' />
-                            </Grid>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                            </Collapse>
+                            <Collapse in={!anonymous}>
+                                <Grid item>
+                                    <TextField label='First Name' variant='outlined' />
+                                </Grid>
+                            </Collapse>
+                            <Collapse in={!anonymous}>
+                                <Grid item>
+                                    <TextField label='Last Name' variant='outlined' />
+                                </Grid>
+                            </Collapse>
                         </Grid>
                         <Grid
                             container
                             justify='space-around'
                             className={classes.grid}
                         >
-                            <Grid item>
-                                <TextField label='Email' variant='outlined' />
-                            </Grid>
-                            <Grid item>
-                                <TextField label='Phone Number' variant='outlined' />
-                            </Grid>
+                            <Collapse in={!anonymous}>
+                                <Grid item>
+                                    <TextField label='Email' variant='outlined' />
+                                </Grid>
+                            </Collapse>
+                            <Collapse in={!anonymous}>
+                                <Grid item>
+                                    <TextField label='Phone Number' variant='outlined' />
+                                </Grid>
+                            </Collapse>
                         </Grid>
                     </Grid>
-                    <Grid
-                        container
-                        justify='space-around'
-                        className={classes.grid}
-                    >
-                        <FormControlLabel
-                            className={classes.formControl}
-                            control={
-                                <Switch
-                                    checked={wantsContact}
-                                    onChange={handleContactSwitch}
-                                    name='contactMeSwitch'
-                                    color='primary'
-                                />
-                            }
-                            label='I would like to be contacted about my feedback.'
-                        />
-                    </Grid>
+                    <Collapse in={!anonymous}>
+                        <Grid
+                            container
+                            justify='space-around'
+                            className={classes.grid}
+                        >
+                            <FormControlLabel
+                                className={classes.formControl}
+                                control={
+                                    <Switch
+                                        checked={wantsContact}
+                                        onChange={handleContactSwitch}
+                                        name='contactMeSwitch'
+                                        color='primary'
+                                    />
+                                }
+                                label='I would like to be contacted about my feedback.'
+                            />
+                        </Grid>
+                    </Collapse>
                     <Grid
                         container
                         justify='space-around'
