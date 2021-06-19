@@ -1,8 +1,10 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const PORT = process.env.PORT || 3001;
+const knex = require('./database/knex');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
 const users = require('./routes/users');
 const index = require('./routes/index');
@@ -45,8 +47,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3001, () => {
-  console.log('Now listening on available port.')
-})
+app.listen(PORT, () => {
+  console.log(`Now listening on port ${PORT}.`);
+});
 
 module.exports = app;
