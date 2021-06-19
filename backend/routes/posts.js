@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET feedback forms listing. */
-router.get('/', function(req, res, next) {
+/* GET feedback posts listing. */
+router.get('/:id', function(req, res, next) {
   res.send('respond with a resource');
 });
+
+
 
 module.exports = router;

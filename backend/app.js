@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 const users = require('./routes/users');
 const index = require('./routes/index');
-const forms = require('./routes/forms');
+const posts = require('./routes/posts');
 const orgs = require('./routes/orgs');
 const actions = require('./routes/actions');
 
@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/api/v1/users', users);
-app.use('/api/v1/forms', forms);
+app.use('/api/v1/posts', posts);
 app.use('/api/v1/orgs', orgs);
 app.use('/api/v1/actions', actions);
 
