@@ -6,6 +6,10 @@ router.get('/:id', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+router.post();
 
+router.delete();
+
+router.patch();
 
 module.exports = router;

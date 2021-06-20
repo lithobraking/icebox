@@ -6,8 +6,8 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/:id', (req, res, next) => {
-  res.status(200).send('user endpoint hit')
+router.get('/:id/posts', (req, res, next) => {
+  // GET all posts associated with a user
 })
 
 module.exports = router;

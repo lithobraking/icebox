@@ -9,6 +9,13 @@ module.exports = {
     seeds: './database/seeds'
   },
 
+  test: {
+    client: 'pg',
+    connection: 'postgres://localhost/iceboxtestdb',
+    migrations: './database/migrations',
+    seeds: './database/seeds'
+  },
+
   staging: {
     client: 'postgresql',
     connection: {
