@@ -14,10 +14,13 @@ router.get('/:id/members', (req, res, next) => {
   // GET all users associated with an org
 })
 
+// create new org
 router.post();
 
+// remove org 
 router.delete();
 
+// update org information
 router.patch();
 
 module.exports = router;

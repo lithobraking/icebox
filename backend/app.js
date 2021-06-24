@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3001;
 const knex = require('./database/knex');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const {Model} = require('objection');
 
 const users = require('./routes/users');
 const index = require('./routes/index');
