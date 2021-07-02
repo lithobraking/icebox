@@ -2,7 +2,6 @@
 exports.up = (knex) => {
   knex.schema.createTable('posts', (table) => {
     table.increments('id');
-    table.string('postID');
     table.timestamp('createdAt').defaultTo(knex.fn.now());
     table.string('feedbackType');
     table.boolean('isAnon');
