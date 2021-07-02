@@ -26,9 +26,15 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         marginTop: '20px',
     },
+    gridEnd: {
+        display: 'flex',
+        alignItems: 'center',
+        marginTop: '20px',
+        marginBottom: '20px',
+    },
     commentTextBox: {
         width: '90%',
-    }
+    },
 }));
 
 const EntryForm = () => {
@@ -216,7 +222,7 @@ const EntryForm = () => {
                     <Grid
                         container
                         justify='space-around'
-                        className={classes.grid}
+                        className={classes.gridEnd}
                     >
                         <Button variant='contained' color='primary' size='large'>Submit</Button>
                     </Grid>
