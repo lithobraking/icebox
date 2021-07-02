@@ -1,6 +1,14 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom';
 import EntryForm from './components/EntryForm';
+import PostPage from './components/PostPage';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import { CssBaseline, Typography } from '@material-ui/core';
+import { CssBaseline, Typography, Button } from '@material-ui/core';
+
 
 const theme = createMuiTheme({
   palette: {
@@ -24,23 +32,50 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
+  },
+  nav: {
+    display: 'inline-block',
+    margin: 5
   }
 }));
 
-function App() {
+const App = () => {
   const classes = useStyles();
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className={classes.root}>
-        <header className="app-header">
-          <Typography variant='h3'>ADO Feedback Form</Typography>
-        </header>
-        <article className={classes.formContainer}>
-          <EntryForm />
-        </article>
-      </div>
+      <Router>
+        <div>
+          <nav className={classes.nav}>
+            <div>
+              <Link to='/NewFeedback'>
+                <Button variant='contained' color='primary' size='large'>Post Feedback</Button>
+              </Link>
+            </div>
+            <div>
+              <Link to='/Posts'>
+                <Button variant='contained' color='primary' size='large'>View Posts</Button>
+              </Link>
+            </div>
+          </nav>
+        </div>
+        <Switch>
+          <Route path='/NewFeedback'>
+            <div className={classes.root}>
+              <header className="app-header">
+                <Typography variant='h3'>Post Feedback</Typography>
+              </header>
+              <article className={classes.formContainer}>
+                <EntryForm />
+              </article>
+            </div>
+          </Route>
+          <Route path='/Posts'>
+            <PostPage />
+          </Route>
+        </Switch>
+      </Router>
     </ThemeProvider>
   );
 }
