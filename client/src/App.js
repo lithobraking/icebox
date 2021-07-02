@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
   },
-  nav: {
+  button: {
     display: 'inline-block',
     margin: 5
   }
@@ -47,15 +47,16 @@ const App = () => {
       <CssBaseline />
       <Router>
         <div>
-          <nav className={classes.nav}>
+          <nav>
             <div>
-              <Link to='/NewFeedback'>
-                <Button variant='contained' color='primary' size='large'>Post Feedback</Button>
+            <Link to='/'>
+                <Button className={classes.button} variant='contained' color='primary'>Home</Button>
               </Link>
-            </div>
-            <div>
+              <Link to='/NewFeedback'>
+                <Button className={classes.button} variant='contained' color='primary'>Post Feedback</Button>
+              </Link>
               <Link to='/Posts'>
-                <Button variant='contained' color='primary' size='large'>View Posts</Button>
+                <Button className={classes.button} variant='contained' color='primary'>View Posts</Button>
               </Link>
             </div>
           </nav>
@@ -73,6 +74,9 @@ const App = () => {
           </Route>
           <Route path='/Posts'>
             <PostPage />
+          </Route>
+          <Route path='/'>
+            
           </Route>
         </Switch>
       </Router>
