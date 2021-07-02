@@ -2,10 +2,19 @@
 exports.up = (knex) => {
   knex.schema.createTable('posts', (table) => {
     table.increments('id');
-    table.string('postID').primary();
+    table.string('postID');
     table.timestamp('createdAt').defaultTo(knex.fn.now());
+    table.string('feedbackType');
     table.boolean('isAnon');
     table.boolean('wantsContact');
+
+    // manually entered contact info
+    table.string('rank');
+    table.string('firstName');
+    table.string('lastName');
+    table.string('emailAddress');
+    table.string('phoneNumber');
+    
     table.text('postContent');
     table.string('postStatus');
 
