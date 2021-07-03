@@ -1,5 +1,6 @@
 import React from 'react';
-import PostList from './PostList';
+import PostList from './DisplayPosts';
+import axios from 'axios';
 
 
 const PostPage = () => {
@@ -29,9 +30,17 @@ const PostPage = () => {
         }
     }
 
+    const [posts, setPosts] = '';
 
-    return(
-        <PostList posts={testPosts.posts}/>
+    axios.get('http://localhost:3001/api/v1/posts/')
+        .then((res) => {
+            console.log(res);
+            setPosts(res.data)
+        })
+        .catch(error => console.log(error));
+    console.log(posts);
+    return (
+        <PostList key={testPosts.title} posts={testPosts.posts} />
     )
 }
 
