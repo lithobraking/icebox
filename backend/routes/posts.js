@@ -7,8 +7,7 @@ const hash = require('../Helpers/idHash');
 router.get('/', (req, res) => {
   knex('posts')
     .then((data) => {
-      res.sendStatus(200);
-      res.json(data);
+      res.status(200).json(data);
     });
 });
 
@@ -52,6 +51,6 @@ router.delete('/:id', (req,res) => {
     .catch(res.sendStatus(404));
 });
 
-router.patch();
+// router.patch();
 
 module.exports = router;

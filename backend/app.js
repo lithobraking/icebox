@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 3001;
 const knex = require('./database/knex');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const {Model} = require('objection');
@@ -24,12 +25,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/', index);
-app.use('/api/v1/users', users);
+// app.use('/api/v1/users', users);
 app.use('/api/v1/posts', posts);
-app.use('/api/v1/orgs', orgs);
-app.use('/api/v1/actions', actions);
+// app.use('/api/v1/orgs', orgs);
+// app.use('/api/v1/actions', actions);
 
 
 // catch 404 and forward to error handler

@@ -5,15 +5,14 @@ exports.up = (knex) => {
         table.timestamp('dateJoined').defaultTo(knex.fn.now());
         table.string('permissionLevel');
         table.string('username')
+            .unique();
         table.string('firstName');
         table.string('lastName');
         table.string('rank');
         table.string('organization');
         table.string('emailAddress')
-            .notNullable()
             .unique();
         table.string('password')
-            .notNullable();
         table.string('phoneNumber');
 
         // connects user to post
