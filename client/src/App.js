@@ -5,7 +5,7 @@ import {
   Link,
 } from 'react-router-dom';
 import EntryForm from './components/EntryForm';
-import PostPage from './components/PostPage';
+import DisplayPosts from './components/DisplayPosts';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline, Typography, Button } from '@material-ui/core';
 
@@ -73,7 +73,7 @@ const App = () => {
             </div>
           </Route>
           <Route path='/Posts'>
-            <PostPage />
+            <DisplayPosts />
           </Route>
           <Route path='/'>
             
