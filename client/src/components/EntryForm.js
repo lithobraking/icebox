@@ -26,11 +26,8 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         marginTop: '20px',
     },
-    gridEnd: {
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: '20px',
-        marginBottom: '20px',
+    paper: {
+        height: 580,
     },
     commentTextBox: {
         width: '90%',
@@ -70,7 +67,7 @@ const EntryForm = () => {
 
     return (
         <form className={classes.root}>
-            <Paper elevation={3}>
+            <Paper elevation={3} className={classes.paper}>
                 <MuiPickersUtilsProvider utils={MomentUtils}>
                     <Grid container spacing={1}>
 
@@ -105,7 +102,7 @@ const EntryForm = () => {
                                     >
                                         <MenuItem value=''>
                                             ----
-                                    </MenuItem>
+                                        </MenuItem>
                                         <MenuItem value='praise'>Praise</MenuItem>
                                         <MenuItem value='complaint'>Complaint</MenuItem>
                                         <MenuItem value='peer review'>Peer Review</MenuItem>
@@ -146,13 +143,26 @@ const EntryForm = () => {
                                         >
                                             <MenuItem value=''>
                                                 ----
-                                    </MenuItem>
+                                            </MenuItem>
                                             <MenuItem value='e1'>E-1</MenuItem>
                                             <MenuItem value='e2'>E-2</MenuItem>
                                             <MenuItem value='e3'>E-3</MenuItem>
                                             <MenuItem value='e4'>E-4</MenuItem>
                                             <MenuItem value='e5'>E-5</MenuItem>
-
+                                            <MenuItem value='e6'>E-6</MenuItem>
+                                            <MenuItem value='e7'>E-7</MenuItem>
+                                            <MenuItem value='e8'>E-8</MenuItem>
+                                            <MenuItem value='e9'>E-9</MenuItem>
+                                            <MenuItem value='o1'>O-1</MenuItem>
+                                            <MenuItem value='o2'>O-2</MenuItem>
+                                            <MenuItem value='o3'>O-3</MenuItem>
+                                            <MenuItem value='o4'>O-4</MenuItem>
+                                            <MenuItem value='o5'>O-5</MenuItem>
+                                            <MenuItem value='o6'>O-6</MenuItem>
+                                            <MenuItem value='o7'>O-7</MenuItem>
+                                            <MenuItem value='o8'>O-8</MenuItem>
+                                            <MenuItem value='o9'>O-9</MenuItem>
+                                            <MenuItem value='o10'>O-10</MenuItem>
                                         </Select>
                                     </FormControl>
                                 </Grid>
@@ -222,7 +232,7 @@ const EntryForm = () => {
                     <Grid
                         container
                         justify='space-around'
-                        className={classes.gridEnd}
+                        className={classes.grid}
                     >
                         <Button variant='contained' color='primary' size='large'>Submit</Button>
                     </Grid>
