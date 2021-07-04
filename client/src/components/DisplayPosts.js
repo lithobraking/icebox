@@ -4,31 +4,6 @@ import axios from 'axios';
 
 
 const DisplayPosts = () => {
-    const mockPosts = {
-        posts: [{
-            title: "One",
-            date: "31 June 2021",
-            body: "Lorem ipsum blah blah blah something something"
-        },
-        {
-            title: "Two",
-            date: "31 June 2021",
-            body: "Lorem ipsum blah blah blah something something"
-        },
-        {
-            title: "Three",
-            date: "31 June 2021",
-            body: "Lorem ipsum blah blah blah something something"
-        },
-        {
-            title: "Four",
-            date: "31 June 2021",
-            body: "Lorem ipsum blah blah blah something something"
-        }],
-        irrelevant: {
-            body: "haha! I wasted your time!"
-        }
-    }
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -36,11 +11,6 @@ const DisplayPosts = () => {
             const req = await axios.get('http://localhost:3001/api/v1/posts/')
             setPosts(req.data);
             return req;
-            // .then((res) => {
-            //     setPosts(res.data);
-            //     console.log(posts);
-            // })
-            // .catch(error => console.log(error));
         }
         getPosts();
 
