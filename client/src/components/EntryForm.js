@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import { Button, Collapse, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select, Switch, TextField } from '@material-ui/core';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import axios from 'axios';
+import { last } from 'lodash';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,11 +37,16 @@ const useStyles = makeStyles((theme) => ({
 
 const EntryForm = () => {
     const classes = useStyles();
-    const [selectedDate, setSelectedDate] = useState(Date.now());
+    // const [selectedDate, setSelectedDate] = useState(Date.now());
     const [feedbackType, setFeedbackType] = useState('');
     const [anonymous, setAnonymous] = useState(false);
     const [rank, setRank] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [emailAddress, setEmailAddress] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [wantsContact, setWantsContact] = useState(false);
+    const [body, setBody] = useState('')
 
 
     // haha event handlers go brrr
@@ -51,21 +57,59 @@ const EntryForm = () => {
     const handleFeedbackTypeChange = (event) => {
         setFeedbackType(event.target.value);
     };
-
     const handleAnonSwitch = (event) => {
         setAnonymous(event.target.checked);
     };
-
     const handleRankSelect = (event) => {
         setRank(event.target.value);
     };
-
+    const handleFirstName = (event) => {
+        setFirstName(event.target.value);
+    };
+    const handleLastName = (event) => {
+        setLastName(event.target.value);
+    };
+    const handleEmailAddress = (event) => {
+        setEmailAddress(event.target.value);
+    };
+    const handlePhoneNumber = (event) => {
+        setPhoneNumber(event.target.value);
+    }
     const handleContactSwitch = (event) => {
         setWantsContact(event.target.checked);
-    }
+    };
+    const handleBody = (event) => {
+        setBody(event.target.value);
+    };
+    
 
     const handleSubmit = (event) => {
-
+        alert('button was pressed')
+        const output = {
+            feedbackType: feedbackType,
+            isAnon: anonymous,
+            wantsContact: wantsContact,
+            rank: rank,
+            firstName: firstName,
+            lastName: lastName,
+            emailAddress: emailAddress,
+            phoneNumber: phoneNumber,
+            postContent: body,
+        }
+        console.log(output);
+        // event.preventDefault();
+        // const res = await axios.post('http://localhost:3001/api/v1/posts/', {
+        //     feedbackType: feedbackType,
+        //     isAnon: anonymous,
+        //     wantsContact: wantsContact,
+        //     rank: rank,
+        //     firstName: firstName,
+        //     lastName: lastName,
+        //     emailAddress: emailAddress,
+        //     phoneNumber: phoneNumber,
+        //     postContent: body,
+        // })
+        // return res;
     }
 
 
@@ -172,12 +216,12 @@ const EntryForm = () => {
                             </Collapse>
                             <Collapse in={!anonymous}>
                                 <Grid item>
-                                    <TextField label='First Name' variant='outlined' />
+                                    <TextField label='First Name' variant='outlined' value={firstName} onChange={handleFirstName}/>
                                 </Grid>
                             </Collapse>
                             <Collapse in={!anonymous}>
                                 <Grid item>
-                                    <TextField label='Last Name' variant='outlined' />
+                                    <TextField label='Last Name' variant='outlined' value={lastName} onChange={handleLastName}/>
                                 </Grid>
                             </Collapse>
                         </Grid>
@@ -188,12 +232,12 @@ const EntryForm = () => {
                         >
                             <Collapse in={!anonymous}>
                                 <Grid item>
-                                    <TextField label='Email' variant='outlined' />
+                                    <TextField label='Email' variant='outlined' value={emailAddress} onChange={handleEmailAddress}/>
                                 </Grid>
                             </Collapse>
                             <Collapse in={!anonymous}>
                                 <Grid item>
-                                    <TextField label='Phone Number' variant='outlined' />
+                                    <TextField label='Phone Number' variant='outlined' value={phoneNumber} onChange={handlePhoneNumber}/>
                                 </Grid>
                             </Collapse>
                         </Grid>
@@ -230,6 +274,8 @@ const EntryForm = () => {
                             rows={8}
                             placeholder='Enter your feedback here...'
                             variant='outlined'
+                            value={body} 
+                            onChange={handleBody}
                         />
                     </Grid>
                     <Grid
@@ -237,7 +283,7 @@ const EntryForm = () => {
                         justify='space-around'
                         className={classes.grid}
                     >
-                        <Button variant='contained' color='primary' size='large'>Submit</Button>
+                        <Button variant='contained' color='primary' size='large' onSubmit={handleSubmit} >Submit</Button>
                     </Grid>
                 </MuiPickersUtilsProvider>
             </Paper>

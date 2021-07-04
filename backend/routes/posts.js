@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
       lastName: req.body.lastName,
       emailAddress: req.body.emailAddress,
       phoneNumber: req.body.phoneNumber,
-      postContent: req.body.postContent,
+      postContent: req.body.body,
     })
     .then(() => {
       res.sendStatus(201);
