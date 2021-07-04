@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { Button, Collapse, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select, Switch, TextField } from '@material-ui/core';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
-
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -44,9 +44,9 @@ const EntryForm = () => {
 
 
     // haha event handlers go brrr
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-    };
+    // const handleDateChange = (date) => {
+    //     setSelectedDate(date);
+    // };
 
     const handleFeedbackTypeChange = (event) => {
         setFeedbackType(event.target.value);
@@ -64,6 +64,10 @@ const EntryForm = () => {
         setWantsContact(event.target.checked);
     }
 
+    const handleSubmit = (event) => {
+
+    }
+
 
     return (
         <form className={classes.root}>
@@ -76,10 +80,11 @@ const EntryForm = () => {
                             justify='space-around'
                             className={classes.grid}
                         >
-                            <Grid item>
+                            {/* <Grid item>
                                 <KeyboardDatePicker
                                     className={classes.formControl}
                                     disableToolbar
+                                    autoOk={true}
                                     variant='inline'
                                     format='MM/DD/yyyy'
                                     margin='normal'
@@ -90,7 +95,7 @@ const EntryForm = () => {
                                         'aria-label': 'change date',
                                     }}
                                 />
-                            </Grid>
+                            </Grid> */}
                             <Grid item>
                                 <FormControl variant='outlined' className={classes.formControl}>
                                     <InputLabel id='type-select-label'>Feedback Type</InputLabel>
@@ -100,9 +105,7 @@ const EntryForm = () => {
                                         onChange={handleFeedbackTypeChange}
                                         label='Feedback Type'
                                     >
-                                        <MenuItem value=''>
-                                            ----
-                                        </MenuItem>
+                                        <MenuItem value=''>----</MenuItem>
                                         <MenuItem value='praise'>Praise</MenuItem>
                                         <MenuItem value='complaint'>Complaint</MenuItem>
                                         <MenuItem value='peer review'>Peer Review</MenuItem>
