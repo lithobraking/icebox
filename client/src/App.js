@@ -1,6 +1,14 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom';
 import EntryForm from './components/EntryForm';
+import DisplayPosts from './components/DisplayPosts';
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import { CssBaseline, Typography } from '@material-ui/core';
+import { CssBaseline, Typography, Button } from '@material-ui/core';
+
 
 const theme = createMuiTheme({
   palette: {
@@ -24,23 +32,54 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
+  },
+  button: {
+    display: 'inline-block',
+    margin: 5
   }
 }));
 
-function App() {
+const App = () => {
   const classes = useStyles();
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className={classes.root}>
-        <header className="app-header">
-          <Typography variant='h3'>ADO Feedback Form</Typography>
-        </header>
-        <article className={classes.formContainer}>
-          <EntryForm />
-        </article>
-      </div>
+      <Router>
+        <div>
+          <nav>
+            <div>
+            <Link to='/'>
+                <Button className={classes.button} variant='contained' color='primary'>Home</Button>
+              </Link>
+              <Link to='/NewFeedback'>
+                <Button className={classes.button} variant='contained' color='primary'>Post Feedback</Button>
+              </Link>
+              <Link to='/Posts'>
+                <Button className={classes.button} variant='contained' color='primary'>View Posts</Button>
+              </Link>
+            </div>
+          </nav>
+        </div>
+        <Switch>
+          <Route path='/NewFeedback'>
+            <div className={classes.root}>
+              <header className="app-header">
+                <Typography variant='h3'>Post Feedback</Typography>
+              </header>
+              <article className={classes.formContainer}>
+                <EntryForm />
+              </article>
+            </div>
+          </Route>
+          <Route path='/Posts'>
+            <DisplayPosts />
+          </Route>
+          <Route path='/'>
+            
+          </Route>
+        </Switch>
+      </Router>
     </ThemeProvider>
   );
 }
