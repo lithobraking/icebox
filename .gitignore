@@ -23,4 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 .vscode
 .eslintcache
+client/node_modules
+backend/node_modules
 client/node_modules/.cache/.eslintcache
