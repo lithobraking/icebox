@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import { Button, Collapse, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select, Switch, TextField } from '@material-ui/core';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import axios from 'axios';
-import { last } from 'lodash';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -81,24 +81,10 @@ const EntryForm = () => {
     const handleBody = (event) => {
         setBody(event.target.value);
     };
-    
 
-    const handleSubmit = (event) => {
-        alert('button was pressed')
-        const output = {
-            feedbackType: feedbackType,
-            isAnon: anonymous,
-            wantsContact: wantsContact,
-            rank: rank,
-            firstName: firstName,
-            lastName: lastName,
-            emailAddress: emailAddress,
-            phoneNumber: phoneNumber,
-            postContent: body,
-        }
-        console.log(output);
-        // event.preventDefault();
-        // const res = await axios.post('http://localhost:3001/api/v1/posts/', {
+
+    const handleSubmit = async (event) => {
+        // const output = {
         //     feedbackType: feedbackType,
         //     isAnon: anonymous,
         //     wantsContact: wantsContact,
@@ -108,13 +94,34 @@ const EntryForm = () => {
         //     emailAddress: emailAddress,
         //     phoneNumber: phoneNumber,
         //     postContent: body,
-        // })
-        // return res;
+        // }
+        // alert(JSON.stringify(output))
+        event.preventDefault();
+        const res = await axios.post('http://localhost:3001/api/v1/posts', {
+            feedbackType: feedbackType,
+            isAnon: anonymous,
+            wantsContact: wantsContact,
+            rank: rank,
+            firstName: firstName,
+            lastName: lastName,
+            emailAddress: emailAddress,
+            phoneNumber: phoneNumber,
+            postContent: body,
+        })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch(
+                (error) => {
+                    console.log(error);
+                }
+            )
+        return res;
     }
 
 
     return (
-        <form className={classes.root}>
+        <form className={classes.root} onSubmit={handleSubmit}>
             <Paper elevation={3} className={classes.paper}>
                 <MuiPickersUtilsProvider utils={MomentUtils}>
                     <Grid container spacing={1}>
@@ -216,12 +223,12 @@ const EntryForm = () => {
                             </Collapse>
                             <Collapse in={!anonymous}>
                                 <Grid item>
-                                    <TextField label='First Name' variant='outlined' value={firstName} onChange={handleFirstName}/>
+                                    <TextField label='First Name' variant='outlined' value={firstName} onChange={handleFirstName} />
                                 </Grid>
                             </Collapse>
                             <Collapse in={!anonymous}>
                                 <Grid item>
-                                    <TextField label='Last Name' variant='outlined' value={lastName} onChange={handleLastName}/>
+                                    <TextField label='Last Name' variant='outlined' value={lastName} onChange={handleLastName} />
                                 </Grid>
                             </Collapse>
                         </Grid>
@@ -232,12 +239,12 @@ const EntryForm = () => {
                         >
                             <Collapse in={!anonymous}>
                                 <Grid item>
-                                    <TextField label='Email' variant='outlined' value={emailAddress} onChange={handleEmailAddress}/>
+                                    <TextField label='Email' variant='outlined' value={emailAddress} onChange={handleEmailAddress} />
                                 </Grid>
                             </Collapse>
                             <Collapse in={!anonymous}>
                                 <Grid item>
-                                    <TextField label='Phone Number' variant='outlined' value={phoneNumber} onChange={handlePhoneNumber}/>
+                                    <TextField label='Phone Number' variant='outlined' value={phoneNumber} onChange={handlePhoneNumber} />
                                 </Grid>
                             </Collapse>
                         </Grid>
@@ -274,7 +281,7 @@ const EntryForm = () => {
                             rows={8}
                             placeholder='Enter your feedback here...'
                             variant='outlined'
-                            value={body} 
+                            value={body}
                             onChange={handleBody}
                         />
                     </Grid>
@@ -283,7 +290,7 @@ const EntryForm = () => {
                         justify='space-around'
                         className={classes.grid}
                     >
-                        <Button variant='contained' color='primary' size='large' onSubmit={handleSubmit} >Submit</Button>
+                        <Button type='submit' variant='contained' color='primary' size='large'>Submit</Button>
                     </Grid>
                 </MuiPickersUtilsProvider>
             </Paper>
