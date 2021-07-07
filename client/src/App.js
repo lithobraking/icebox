@@ -47,7 +47,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <div>
+        {/* <div>
           <nav>
             <div>
             <Link to='/'>
@@ -61,12 +61,12 @@ const App = () => {
               </Link>
             </div>
           </nav>
-        </div>
+        </div> */}
         <Switch>
           <Route path='/NewFeedback'>
             <div className={classes.root}>
               <header className="app-header">
-                <Typography variant='h3'>Post Feedback</Typography>
+                <Typography variant='h2'>Post Feedback</Typography>
               </header>
               <article className={classes.formContainer}>
                 <EntryForm />
@@ -76,7 +76,7 @@ const App = () => {
           <Route path='/Posts'>
             <DisplayPosts />
           </Route>
-          <Route path='/'>
+          <Route exact path='/'>
             <LandingPage/>
           </Route>
         </Switch>

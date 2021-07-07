@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -9,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center'
     },
     title: {
+        marginTop: '20px',
         marginBottom: '100px'
     },
     subtitle: {
@@ -16,7 +18,11 @@ const useStyles = makeStyles((theme) => ({
     },
     welcome: {
         width: '40vw',
-        // textAlign: 'center',
+        marginBottom: '20px',
+    },
+    button: {
+        display: 'inline-block',
+        margin: '10px'
     }
 
 }));
@@ -40,7 +46,14 @@ const LandingPage = () => {
                         Organizations are stronger when everyone has a voice, so add yours here!
                     </Typography>
                 </div>
-                
+                <div>
+                    <Link to='/NewFeedback'>
+                        <Button className={classes.button} variant='contained' color='primary'>Post Feedback</Button>
+                    </Link>
+                    <Link to='/Posts'>
+                        <Button className={classes.button} variant='contained' color='primary'>View Posts</Button>
+                    </Link>
+                </div>
             </div>
         </>
     )
