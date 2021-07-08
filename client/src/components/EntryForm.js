@@ -3,7 +3,7 @@ import MomentUtils from '@date-io/moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { Button, Collapse, FormControl, FormControlLabel, Grid, InputLabel, MenuItem, Select, Switch, TextField } from '@material-ui/core';
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import axios from 'axios';
 
 
@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
 
 const EntryForm = () => {
     const classes = useStyles();
-    // const [selectedDate, setSelectedDate] = useState(Date.now());
     const [feedbackType, setFeedbackType] = useState('');
     const [anonymous, setAnonymous] = useState(false);
     const [rank, setRank] = useState('');
@@ -50,9 +49,6 @@ const EntryForm = () => {
 
 
     // haha event handlers go brrr
-    // const handleDateChange = (date) => {
-    //     setSelectedDate(date);
-    // };
 
     const handleFeedbackTypeChange = (event) => {
         setFeedbackType(event.target.value);
@@ -131,22 +127,6 @@ const EntryForm = () => {
                             justify='space-around'
                             className={classes.grid}
                         >
-                            {/* <Grid item>
-                                <KeyboardDatePicker
-                                    className={classes.formControl}
-                                    disableToolbar
-                                    autoOk={true}
-                                    variant='inline'
-                                    format='MM/DD/yyyy'
-                                    margin='normal'
-                                    label='Date'
-                                    value={selectedDate}
-                                    onChange={handleDateChange}
-                                    KeyboardButtonProps={{
-                                        'aria-label': 'change date',
-                                    }}
-                                />
-                            </Grid> */}
                             <Grid item>
                                 <FormControl variant='outlined' className={classes.formControl}>
                                     <InputLabel id='type-select-label'>Feedback Type</InputLabel>
