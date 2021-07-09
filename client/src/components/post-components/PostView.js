@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import DisplayPosts from "./DisplayPosts";
 import { Link } from "react-router-dom";
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -28,7 +29,7 @@ const PostView = () => {
                 <Button color='primary'>Post Feedback</Button>
             </Link>
             <Link to='/'>
-                <Button color='primary'>Return to Home</Button>
+                <Button color='secondary'>Return to Home</Button>
             </Link>
             </div>
             <DisplayPosts />
