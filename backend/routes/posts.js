@@ -7,8 +7,7 @@ const hash = require('../Helpers/idHash');
 router.get('/', (req, res) => {
   knex('posts')
     .then((data) => {
-      res.sendStatus(200);
-      res.json(data);
+      res.status(200).json(data);
     });
 });
 
@@ -24,13 +23,13 @@ router.post('/', (req, res) => {
       feedbackType: req.body.feedbackType,
       isAnon: req.body.isAnon,
       wantsContact: req.body.wantsContact,
-
       rank: req.body.rank,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       emailAddress: req.body.emailAddress,
       phoneNumber: req.body.phoneNumber,
       postContent: req.body.postContent,
+      postStatus: null
     })
     .then(() => {
       res.sendStatus(201);
@@ -39,10 +38,13 @@ router.post('/', (req, res) => {
           res.json(data)
         });
     })
-    .catch(res.sendStatus(422));
+    .catch(
+      res.status(422)
+    )
+    .then(console.log(res));
 });
 
-router.delete('/:id', (req,res) => {
+router.delete('/:id', (req, res) => {
   knex('posts')
     .where('id', req.params.id)
     .del()
@@ -52,6 +54,6 @@ router.delete('/:id', (req,res) => {
     .catch(res.sendStatus(404));
 });
 
-router.patch();
+// router.patch();
 
 module.exports = router;

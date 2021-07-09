@@ -4,16 +4,16 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/iceboxdb-dev',
+    connection: 'postgres://localhost/icebox-dev',
     migrations: './database/migrations',
     seeds: './database/seeds'
   },
 
   test: {
     client: 'pg',
-    connection: 'postgres://localhost/iceboxdb-test',
-    migrations: './database/migrations',
-    seeds: './database/seeds'
+    connection: 'postgres://localhost/icebox-test',
+    migrations: './database/testdb/migrations',
+    seeds: './database/testdb/seeds'
   },
 
   staging: {
