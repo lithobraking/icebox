@@ -4,7 +4,7 @@ import {
   Route,
 } from 'react-router-dom';
 import EntryForm from './components/EntryForm';
-import DisplayPosts from './components/DisplayPosts';
+import PostView from './components/post-components/PostView'
 import LandingPage from './components/LandingPage';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
@@ -31,7 +31,7 @@ const App = () => {
             <EntryForm />
           </Route>
           <Route path='/Posts'>
-            <DisplayPosts />
+            <PostView />
           </Route>
           <Route exact path='/'>
             <LandingPage />

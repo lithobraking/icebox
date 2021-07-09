@@ -4,7 +4,7 @@ import { Card, Typography, CardContent } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '45%',
+        width: '100%',
         margin: '20px'
     },
     date: {
