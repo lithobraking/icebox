@@ -29,7 +29,7 @@ const PostView = () => {
                 <Button color='primary'>Post Feedback</Button>
             </Link>
             <Link to='/'>
-                <Button color='secondary'>Return to Home</Button>
+                <Button color='primary'>Return to Home</Button>
             </Link>
             </div>
             <DisplayPosts />
